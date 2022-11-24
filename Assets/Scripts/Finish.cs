@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class Finish : MonoBehaviour
 {
-    public GameObject panelMenang;
+    public GameObject winPanel;
+    private AudioSource audioSource;
+    public AudioClip winSound;
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
             Debug.Log("Menyentuh finish");
-            panelMenang.SetActive(true);
+            winPanel.SetActive(true);
+            audioSource = FindObjectOfType<AudioSource>();
+            audioSource.PlayOneShot(winSound);
         }
     }
 }

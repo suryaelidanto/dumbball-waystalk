@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class Bricks : MonoBehaviour
 {
-    public GameObject brick;
+    private AudioSource audioSource;
+    public AudioClip breakSound;
 
-	private void OnMouseDown() {
-        Destroy(brick);
+    private void Start()
+    {
+        audioSource = FindObjectOfType<AudioSource>();
+    }
+
+    private void OnMouseDown() {
         Debug.Log("kubus berhasil dihancurkan!");
+        audioSource.PlayOneShot(breakSound);
+        Destroy(this.gameObject);
     }
 }
